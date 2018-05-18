@@ -30,10 +30,10 @@ The script take two arguments:
 ### Examples
 
 ```
-./addSecurityExceptions.sh myApp.apk
+./addSecurityExceptions.sh path/to/myApp.apk 
 
 or
 
-./addSecurityExceptions.sh myApp.apk ~/.android/debug.keystore
+./addSecurityExceptions.sh path/to/myApp.apk ~/.android/other.keystore
 
 ```
