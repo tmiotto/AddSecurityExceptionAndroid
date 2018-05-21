@@ -2,7 +2,7 @@
 if [ $# -eq 0 ]
   then
     echo "No arguments supplied"
-    echo "Usage: ./addSecurityExceptions.sh APK filename"
+    echo "Usage: ./addSecurityExceptions.sh <APK_filename>"
     exit -1
 fi
 if [ ! -z "$2" ]
@@ -20,7 +20,7 @@ fullfile=$1
 filename=$(basename "$fullfile")
 extension="${filename##*.}"
 filename="${filename%.*}"
-new="_new.apk"
+new="_resign.apk"
 newFileName=$filename$new
 tmpDir=/tmp/$filename
 
@@ -41,4 +41,3 @@ java -jar apktool.jar empty-framework-dir --force $tmpDir
 echo "Building new APK $newFileName"
 java -jar apktool.jar b -o ./$newFileName $tmpDir
 jarsigner -verbose -keystore $debugKeystore -storepass android -keypass android ./$newFileName androiddebugkey
-
